@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotesApp.Views.NotesPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="LvNotes" ItemSelected="LvNotes_OnItemSelected" SeparatorVisibility="None" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem CommandParameter="{Binding .}" Text="Delete" x:Name="DeleteNote" Clicked="DeleteNote_OnClicked"></MenuItem>
+                            </ViewCell.ContextActions>
+                            <Frame Margin="5">
+                                <StackLayout>
+                                    <Label Text="{Binding title}" FontSize="Large"/>
+                                    <Label Text="{Binding description}" FontSize="Medium"/>
+                                </StackLayout>
+                            </Frame>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Text="Take a note..." FontSize="Medium" Margin="10">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="TapAddNote" Tapped="TapAddNote_OnTapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+      
+    </ContentPage.Content>
+</ContentPage>
